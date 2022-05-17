@@ -1,4 +1,4 @@
-defmodule CanadaDebug do
+defmodule Canada do
   def test_parse_item(url) do
     response = Crawly.fetch(url)
     {:ok, document} = Floki.parse_document(response.body)

@@ -3,6 +3,8 @@ import Config
 {_, cwd} = File.cwd()
 folder = cwd <> "/data"
 
+config :floki, :html_parser, Floki.HTMLParser.Html5ever
+
 config :crawly,
   middlewares: [
     Crawly.Middlewares.UniqueRequest,
@@ -12,6 +14,3 @@ config :crawly,
     {Crawly.Pipelines.CSVEncoder, fields: [:title, :text]},
     {Crawly.Pipelines.WriteToFile, folder: folder, extension: "csv"}
   ]
-
-# config :floki, :html_parser, Floki.HTMLParser.FastHtml
-# config :floki, :html_parser, Floki.HTMLParser.Html5ever
