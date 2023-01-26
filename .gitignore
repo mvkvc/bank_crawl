@@ -1,4 +1,6 @@
-.elixir_ls/
+.elixir_ls
+.history
+burrito_out
 
 # The directory Mix will write compiled artifacts to.
 /_build/

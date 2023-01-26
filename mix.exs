@@ -12,23 +12,10 @@ defmodule BankCrawl.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger],
       mod: {BankCrawl, []}
-    ]
-  end
-
-  # Run "mix help deps" to learn about dependencies.
-  defp deps do
-    [
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:burrito, github: "burrito-elixir/burrito"},
-      {:crawly, "~> 0.13.0"},
-      {:floki, "~> 0.26.0"},
-      {:html5ever, "~> 0.13.0"}
     ]
   end
 
@@ -39,9 +26,19 @@ defmodule BankCrawl.MixProject do
         burrito: [
           targets: [
             linux: [os: :linux, cpu: :x86_64]
-          ],
+          ]
         ]
       ]
+    ]
+  end
+
+  defp deps do
+    [
+      {:burrito, github: "burrito-elixir/burrito"},
+      {:crawly, "~> 0.13.0"},
+      {:floki, "~> 0.26.0"},
+      {:html5ever, "~> 0.13.0"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 end
