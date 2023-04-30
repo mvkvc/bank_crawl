@@ -29,7 +29,8 @@ defmodule BankCrawl.MixProject do
             # macos: [os: :darwin, cpu: :x86_64],
             # windows: [os: :windows, cpu: :x86_64]
           ]
-        ]
+        ],
+        debug: false
       ]
     ]
   end

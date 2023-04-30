@@ -1,6 +1,8 @@
 /.elixir_ls/
 /.history/
-/burrito_out/
+/.vscode/
+/burrito_out/*
+!/burrito_out/.keep
 /dets_simple_storage
 /data/*
 !/data/.keep
