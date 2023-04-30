@@ -1,2 +1,4 @@
 import BankCrawl
-import BankCrawl.Canada
+import BankCrawl.Spiders.CA
+# import BankCrawl.Spiders.UK
+# import BankCrawl.Spiders.US

@@ -2,6 +2,8 @@
 /.history/
 /burrito_out/
 /dets_simple_storage
+/data/*
+!/data/.keep
 
 # The directory Mix will write compiled artifacts to.
 /_build/
