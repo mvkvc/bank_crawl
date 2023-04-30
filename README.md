@@ -1,3 +1,3 @@
-# BankCrawl
+# bank_crawl
 
 CLI to crawl central bank press releases.

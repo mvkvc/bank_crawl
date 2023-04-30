@@ -1,6 +1,7 @@
-.elixir_ls
-.history
-burrito_out
+/.elixir_ls/
+/.history/
+/burrito_out/
+/dets_simple_storage
 
 # The directory Mix will write compiled artifacts to.
 /_build/
