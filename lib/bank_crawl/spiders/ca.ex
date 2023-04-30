@@ -91,7 +91,7 @@ defmodule BankCrawl.Spiders.CA do
 
     removed_urls =
       ["publications", "multimedia", "wp-content", "banknotes"]
-      |> Enum.map(fn url -> base_url() <> url end)
+      |> Enum.map(fn url -> "https://www.bankofcanada.ca/" <> url end)
 
     next_requests =
       (new_page_url ++ next_page_url ++ next_requests)

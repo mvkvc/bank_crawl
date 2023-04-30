@@ -1,3 +1,3 @@
 #! /bin/bash
 
-./burrito_out/bank_crawl_linux "$@"
+./burrito_out/bank_crawl "$@"

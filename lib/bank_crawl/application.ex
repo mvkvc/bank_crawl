@@ -1,35 +1,30 @@
 defmodule BankCrawl.Application do
   use Application
 
+  @allowed_args ["CA", "UK", "US"]
+  @csv_folder "data/"
+
   @impl true
   def start(_type, _args) do
-    args = Burrito.Util.Args.get_arguments()
+    args =
+      Burrito.Util.Args.get_arguments()
+      |> Enum.uniq()
+      |> Enum.filter(fn arg -> Enum.member?(@allowed_args, arg) end)
 
-    spider_lookup = %{
-      "CA" => BankCrawl.Spiders.CA,
-      "US" => BankCrawl.Spiders.US,
-      "UK" => BankCrawl.Spiders.UK
-    }
+    spiders = if length(args) == 0, do: ["CA"], else: args
 
-    spiders =
-      if length(args) == 0 do
-        [BankCrawl.Spiders.CA]
-      else
-        Enum.reduce(args, [], fn id, acc ->
-          value = Map.get(spider_lookup, id)
-          if value, do: acc ++ [value], else: acc
-        end)
-      end
+    IO.inspect(spiders, label: "spiders")
 
-    children = []
+    children =
+      spiders
+      |> Enum.map(fn spider ->
+        Supervisor.child_spec({BankCrawl.Spider, spider}, id: String.to_atom(spider))
+      end)
+
+    # Need to ensure that it stops after spiders end
+    # |> Enum.concat([{BankCrawl.CSVWatcher, @csv_folder}])
+
     opts = [strategy: :one_for_one, name: BankCrawl.Supervisor]
-    start_result = Supervisor.start_link(children, opts)
-
-    # This is a hack, fix this so that each spider is supervised
-    Enum.map(spiders, fn spider ->
-      Crawly.Engine.start_spider(spider)
-    end)
-
-    start_result
+    Supervisor.start_link(children, opts)
   end
 end

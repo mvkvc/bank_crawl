@@ -25,12 +25,9 @@ defmodule BankCrawl.MixProject do
         steps: [:assemble, &Burrito.wrap/1],
         burrito: [
           targets: [
-            linux: [os: :linux, cpu: :x86_64]
-            # macos: [os: :darwin, cpu: :x86_64],
-            # windows: [os: :windows, cpu: :x86_64]
+            linux: [os: get_os_type(), cpu: :x86_64]
           ]
-        ],
-        debug: false
+        ]
       ]
     ]
   end
@@ -44,5 +41,14 @@ defmodule BankCrawl.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
+  end
+
+  def get_os_type do
+    case :os.type() do
+      {:unix, :darwin} -> :darwin
+      {:unix, :linux} -> :linux
+      {:win32, :nt} -> :windows
+      _ -> :err
+    end
   end
 end
