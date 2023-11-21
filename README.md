@@ -4,9 +4,11 @@ CLI to crawl central bank press releases.
 
 Currently supported countries:
 
-- [x] [Canada](https://www.bankofcanada.ca/press-releases/)
-- [ ] [United Kingdom](https://www.bankofengland.co.uk/news/press-releases)
-- [ ] [United States](https://www.federalreserve.gov/newsevents/pressreleases.htm)
+- [Canada](https://www.bankofcanada.ca/press-releases/)
+<!---
+- [United Kingdom](https://www.bankofengland.co.uk/news/press-releases)
+- [United States](https://www.federalreserve.gov/newsevents/pressreleases.htm)
+-->
 
 ## Requirements
 
@@ -23,7 +25,7 @@ mix deps.get
 
 ## Usage
 
-You can specify the country to crawl by space-separated country codes listed below, the default argument is `CA` if no argument is provided.
+You can specify the country to crawl by space-separated country codes listed below. The default argument is `CA` if no argument is provided. Currently only `CA` is implemented.
 
 Example:
 
